@@ -33,6 +33,13 @@ public final class Question {
     private Integer selectedAnswer;
 
     /**
+     * Default constructor.
+     */
+    public Question() {
+        // nothing
+    }
+
+    /**
      * Constructor takes the string of a question.
      * @param question the question text
      * @param category the category this question falls in to

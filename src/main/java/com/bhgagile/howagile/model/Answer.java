@@ -27,6 +27,13 @@ public final class Answer {
     private int points;
 
     /**
+     * Default constructor.
+     */
+    public Answer() {
+        // nothing
+    }
+
+    /**
      * Constructor takes the text of the answer and the points value.
      * @param answerText text of the answer
      * @param key answer key

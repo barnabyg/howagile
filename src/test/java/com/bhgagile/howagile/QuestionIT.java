@@ -12,8 +12,14 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.After;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * @author Barnaby Golden
@@ -49,6 +55,29 @@ public final class QuestionIT {
 
         assertEquals(
                 "Home page title invalid", "Welcome", driver.getTitle());
+
+        try {
+            Thread.sleep(DELAY);
+        } catch (InterruptedException e) {
+            // no action required
+        }
+
+        final WebElement element =
+                driver.findElement(By.id("submitId"));
+
+        element.sendKeys(Keys.RETURN);
+
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(final WebDriver driver) {
+                        return ((JavascriptExecutor) driver).executeScript(
+                               "return document.readyState").equals("complete");
+                    }
+                };
+
+        WebDriverWait wait = new WebDriverWait(driver, DELAY);
+
+        wait.until(pageLoadCondition);
 
         try {
             Thread.sleep(DELAY);

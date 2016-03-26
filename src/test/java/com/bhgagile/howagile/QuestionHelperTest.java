@@ -24,7 +24,7 @@ public final class QuestionHelperTest {
     /**
      * How many questions do we expect.
      */
-    private static final int QUESTION_COUNT = 3;
+    private static final int QUESTION_COUNT = 4;
 
     /**
      * Test the retrieval of a list of questions.

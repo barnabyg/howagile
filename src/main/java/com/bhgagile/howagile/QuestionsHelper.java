@@ -103,6 +103,28 @@ public final class QuestionsHelper {
 
         map.put(3, question);
 
+        answers = new HashMap<Integer, Answer>();
+
+        answers.put(1,
+            new Answer(
+               "Our releases are completely automated", 1, 3));
+        answers.put(2,
+            new Answer(
+               "Our releases are automated, "
+                       + "but we include some manual checks", 2, 2));
+        answers.put(3,
+                new Answer(
+                   "Our releases are partially automated", 3, 1));
+        answers.put(4,
+                new Answer(
+                   "We have no release automation", 4, 0));
+
+        question =
+                new Question("Do you automate your releases?",
+                                              Category.ENGINEERING, answers);
+
+        map.put(4, question);
+
         return map;
     }
 }

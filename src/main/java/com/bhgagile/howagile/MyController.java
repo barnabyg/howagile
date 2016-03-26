@@ -44,7 +44,7 @@ public final class MyController {
      *
      * @param questionModel param
      * @param m model
-     * @return str destination page
+     * @return home destination page
      */
     @RequestMapping(method = RequestMethod.POST, value = "/nextPage")
     public String nextPage(
@@ -54,4 +54,18 @@ public final class MyController {
         return "home";
     }
 
+    /**
+     * Show the results.
+     *
+     * @param questionModel param
+     * @param m model
+     * @return results page
+     */
+    @RequestMapping(method = RequestMethod.POST, value = "/results")
+    public String showResults(
+            @ModelAttribute(value = "questionModel")
+                final QuestionModel questionModel, final Model m) {
+
+        return "results";
+    }
 }
