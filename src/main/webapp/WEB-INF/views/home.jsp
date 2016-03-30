@@ -25,7 +25,7 @@
     </table>
 
     <table>
-      <c:forEach items="${questionModel.questionMap}" var="currQue" varStatus="queIndex">
+      <c:forEach items="${questionModel.questionMap}" begin="0" end="3" var="currQue" varStatus="queIndex">
           <tr>
               <td collspan="2">
                   <form:hidden path="questionMap[${queIndex.count}].question"/>
@@ -38,14 +38,36 @@
                   <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerText"/>
                   <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerKey"/>
   
-                  <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer"
-                      value="${opt.value.answerKey}" label="${opt.value.answerText}"/>
+                  <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer" value="${opt.value.answerKey}" label="${opt.value.answerText}"/> 
               </td>
           </tr>
               </c:forEach>
           <tr><td collspan="2">&nbsp;</td></tr>
       </c:forEach>
     </table>
+
+<!--     <table> -->
+<%--       <c:forEach items="${questionModel.questionMap}" var="currQue" varStatus="queIndex"> --%>
+<!--           <tr> -->
+<!--               <td collspan="2"> -->
+<%--                   <form:hidden path="questionMap[${queIndex.count}].question"/> --%>
+<%--                   <label></label><c:out value="${currQue.value.question}"/><br/> --%>
+<!--               </td> -->
+<!--           </tr> -->
+<%--               <c:forEach items="${currQue.value.answerMap}" var="opt" varStatus="optionIndex"> --%>
+<!--           <tr> -->
+<!--               <td> -->
+<%--                   <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerText"/> --%>
+<%--                   <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerKey"/> --%>
+  
+<%--                   <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer" --%>
+<%--                        value="${opt.value.answerKey}" label="${opt.value.answerText}"/>  --%>
+<!--               </td> -->
+<!--           </tr> -->
+<%--               </c:forEach> --%>
+<!--           <tr><td collspan="2">&nbsp;</td></tr> -->
+<%--       </c:forEach> --%>
+<!--     </table> -->
 
 <br/><br/>
 
