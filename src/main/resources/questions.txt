@@ -1,0 +1,23 @@
+Q|Are your teams self-organising?|TEAM
+A|Our teams are totally self-organising|3
+A|Our teams are mostly self-organising|2
+A|We have a manager or a team leader in each team|1
+A|Our managers/leaders are outside the team but they control what goes on in the team|0
+
+Q|What is your usual team size?|TEAM
+A|All teams  have from 3 to 9 members|3
+A|Some teams have more than 9 or less than 3 members|2
+A|Most teams have more than 9 or less than 3 members|1
+A|All teams have more than 9 or less than 3 members|0
+
+Q|Do you use continuous integration (CI)?|ENGINEERING
+A|We use CI for everything (builds, unit tests, functional tests, code quality checks, perf tests, etc.)|3
+A|We use CI for builds, unit tests and functional tests|2
+A|We use CI for builds and unit tests|1
+A|We don't use CI|0
+
+Q|Do you automate your releases?|ENGINEERING
+A|Our releases are completely automated|3
+A|Our releases are automated but we include some manual checks|2
+A|Our releases are partially automated|1
+A|We have no release automation|0

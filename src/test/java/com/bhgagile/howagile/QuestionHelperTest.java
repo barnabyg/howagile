@@ -13,6 +13,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import com.bhgagile.howagile.model.Answer;
 import com.bhgagile.howagile.model.Question;
 
 /**
@@ -24,7 +25,15 @@ public final class QuestionHelperTest {
     /**
      * How many questions do we expect.
      */
-    private static final int QUESTION_COUNT = 4;
+    private static final int QUESTION_COUNT = 2;
+    /**
+     * How many answers we expect on the first question.
+     */
+    private static final int ANSWER_COUNT = 3;
+    /**
+     * Name of the file that contains the list of questions.
+     */
+    private static final String Q_FILE = "test-questions.txt";
 
     /**
      * Test the retrieval of a list of questions.
@@ -32,9 +41,27 @@ public final class QuestionHelperTest {
     @Test
     public void getQuestionsTest() {
 
-        final Map<Integer, Question> list = QuestionsHelper.loadQuestionMap();
+        final Map<Integer, Question> list
+                    = QuestionsHelper.loadQuestionMap(Q_FILE);
+
+        for (Integer key: list.keySet()) {
+            final Question question = (Question) list.get(key);
+            System.out.println(question.getQuestion());
+
+            for (Integer answerKey: question.getAnswerMap().keySet()) {
+
+                final Answer answer
+                    = (Answer) question.getAnswerMap().get(answerKey);
+
+                System.out.println(answer.getAnswerText());
+            }
+        }
 
         assertEquals("Question list was the wrong size",
-                                list.size(), QUESTION_COUNT);
+                                QUESTION_COUNT, list.size());
+
+        assertEquals("Question list was the wrong size",
+                ANSWER_COUNT, list.get(1).getAnswerMap().size());
     }
+
 }

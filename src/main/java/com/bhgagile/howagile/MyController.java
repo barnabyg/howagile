@@ -23,6 +23,11 @@ import com.bhgagile.howagile.model.QuestionModel;
 public final class MyController {
 
     /**
+     * Filename of the question file.
+     */
+    private static final String QUESTION_FILE = "questions.txt";
+
+    /**
      * Request handler for home page.
      *
      * @param questionModel param
@@ -34,7 +39,8 @@ public final class MyController {
         @ModelAttribute(value = "questionModel")
                 final QuestionModel questionModel, final Model m) {
 
-        questionModel.setQuestionMap(QuestionsHelper.loadQuestionMap());
+        questionModel.setQuestionMap(
+                QuestionsHelper.loadQuestionMap(QUESTION_FILE));
 
         return "home";
     }
