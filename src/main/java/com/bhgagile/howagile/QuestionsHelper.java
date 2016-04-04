@@ -37,106 +37,6 @@ public final class QuestionsHelper {
     }
 
     /**
-     * Load a list of questions.
-     *
-     * @return populated list of questions
-     */
-    public static Map<Integer, Question> loadQuestionMap() {
-
-        final Map<Integer, Question> map = new HashMap<Integer, Question>();
-
-        Map<Integer, Answer> answers = new HashMap<Integer, Answer>();
-
-        answers.put(1,
-                new Answer(
-                   "Our teams are totally self-organising", 1, 3));
-        answers.put(2,
-                new Answer(
-                   "Our teams are mostly self-organising", 2, 2));
-        answers.put(3,
-            new Answer(
-               "We have a manager or a team leader in each team", 3, 1));
-        answers.put(4,
-            new Answer(
-               "Our managers/leaders are outside the team, "
-                       + "but they control what goes on in the team", 4, 0));
-
-        Question question =
-                new Question(
-                   "Are your teams self-organising?", Category.TEAM, answers);
-
-        map.put(1, question);
-
-        answers = new HashMap<Integer, Answer>();
-
-        answers.put(1,
-            new Answer(
-               "All teams  have from 3 to 9 members", 1, 3));
-        answers.put(2,
-            new Answer(
-               "Some teams have more than 9 or less than 3 members", 2, 2));
-        answers.put(3,
-                new Answer(
-                   "Most teams have more than 9 or less than 3 members", 3, 1));
-        answers.put(4,
-                new Answer(
-                   "All teams have more than 9 or less than 3 members", 4, 0));
-
-        question =
-                new Question(
-                   "What is your usual team size?", Category.TEAM, answers);
-
-        map.put(2, question);
-
-        answers = new HashMap<Integer, Answer>();
-
-        answers.put(1,
-            new Answer(
-               "We use CI for everything (builds, unit tests, "
-                       + "functional tests, code quality checks, "
-                       + "perf tests, etc.)", 1, 3));
-        answers.put(2,
-            new Answer(
-               "We use CI for builds, unit tests and functional tests", 2, 2));
-        answers.put(3,
-                new Answer(
-                   "We use CI for builds and unit tests", 3, 1));
-        answers.put(4,
-                new Answer(
-                   "We don't use CI", 4, 0));
-
-        question =
-                new Question("Do you use continuous integration (CI)?",
-                                              Category.ENGINEERING, answers);
-
-        map.put(3, question);
-
-        answers = new HashMap<Integer, Answer>();
-
-        answers.put(1,
-            new Answer(
-               "Our releases are completely automated", 1, 3));
-        answers.put(2,
-            new Answer(
-               "Our releases are automated, "
-                       + "but we include some manual checks", 2, 2));
-        answers.put(3,
-                new Answer(
-                   "Our releases are partially automated", 3, 1));
-        answers.put(4,
-                new Answer(
-                   "We have no release automation", 4, 0));
-
-        question =
-                new Question("Do you automate your releases?",
-                                              Category.ENGINEERING, answers);
-
-        map.put(4, question);
-
-        return map;
-    }
-
-    /**
      * Return a list of questions from a given source file.
      * @param srcPath filename of question source
      * @return map of questions
@@ -168,7 +68,7 @@ public final class QuestionsHelper {
                 continue;
             }
 
-            final String[] parsedStr = str.split("|");
+            final String[] parsedStr = str.split("\\|");
 
             if (parsedStr[0].equals("Q")) {
 
@@ -204,12 +104,21 @@ public final class QuestionsHelper {
         final Map<Integer, Answer> answers = new HashMap<Integer, Answer>();
 
         for (int i = 1; i < strings.size(); i++) {
-            final Answer answer = new Answer(strings.get(i), i, 1);
+
+            final String line = strings.get(i);
+
+            final String[] parsedAnswer = line.split("\\|");
+
+            final Answer answer = new Answer(parsedAnswer[1],
+                                    i, Integer.parseInt(parsedAnswer[2]));
+
             answers.put(i, answer);
         }
 
+        final String[] parsedQuestion = strings.get(0).split("\\|");
+
         final Question question = new Question(
-                strings.get(0), Category.TEAM, answers);
+             parsedQuestion[1], Category.valueOf(parsedQuestion[2]), answers);
 
         return question;
     }

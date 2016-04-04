@@ -11,7 +11,7 @@ A|Most teams have more than 9 or less than 3 members|1
 A|All teams have more than 9 or less than 3 members|0
 
 Q|Do you use continuous integration (CI)?|ENGINEERING
-A|We use CI for everything (builds, unit tests, functional tests, code quality checks, perf tests, etc.)|3
+A|We use CI for everything (builds, unit tests, functional tests, code quality checks, perf. tests, etc.)|3
 A|We use CI for builds, unit tests and functional tests|2
 A|We use CI for builds and unit tests|1
 A|We don't use CI|0

@@ -14,6 +14,7 @@ import java.util.Map;
 import org.junit.Test;
 
 import com.bhgagile.howagile.model.Answer;
+import com.bhgagile.howagile.model.Category;
 import com.bhgagile.howagile.model.Question;
 
 /**
@@ -22,6 +23,10 @@ import com.bhgagile.howagile.model.Question;
  */
 public final class QuestionHelperTest {
 
+    /**
+     * Expected category for first question.
+     */
+    private static final Category CATEGORY = Category.TEAM;
     /**
      * How many questions do we expect.
      */
@@ -44,6 +49,27 @@ public final class QuestionHelperTest {
         final Map<Integer, Question> list
                     = QuestionsHelper.loadQuestionMap(Q_FILE);
 
+
+        assertEquals("Question list was the wrong size",
+                                QUESTION_COUNT, list.size());
+
+        assertEquals("Question list was the wrong size",
+                ANSWER_COUNT, list.get(1).getAnswerMap().size());
+
+        final Question questionOne = list.get(1);
+
+        assertEquals("Unexpected category in question 1",
+                                    CATEGORY, questionOne.getCategory());
+
+        printQuestionSet(list);
+    }
+
+    /**
+     * Print out the contents of a question map.
+     * @param list map of questions
+     */
+    private void printQuestionSet(final Map<Integer, Question> list) {
+
         for (Integer key: list.keySet()) {
             final Question question = (Question) list.get(key);
             System.out.println(question.getQuestion());
@@ -56,12 +82,5 @@ public final class QuestionHelperTest {
                 System.out.println(answer.getAnswerText());
             }
         }
-
-        assertEquals("Question list was the wrong size",
-                                QUESTION_COUNT, list.size());
-
-        assertEquals("Question list was the wrong size",
-                ANSWER_COUNT, list.get(1).getAnswerMap().size());
     }
-
 }
