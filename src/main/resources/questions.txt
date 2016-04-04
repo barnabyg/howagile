@@ -15,6 +15,11 @@ A|Our Scrum process is transparent, we have no need for other forms of reporting
 A|We report verbally|1
 A|We update report documents or report emails|0
 
+Q|How transparent are your teams?|COMMUNICATION
+A|We show sprint progress on task boards and encourage people to attend our sprint reviews|3
+A|We show sprint progress on task boards, but restrict who can attend sprint reviews|2
+A|We restrict who can attend sprint reviews and we do not have public task boards|0
+
 Q|Who is your Product Owner?|PRODUCT
 A|We have a Product Owner from the business who spends 50% or more of their time working with the Scrum Team|3
 A|We have a Product Owner from the business who spends less than 50% of their time working with the Scrum Team|2
@@ -31,6 +36,12 @@ A|We use CI for everything (builds, unit tests, functional tests, code quality c
 A|We use CI for builds, unit tests and functional tests|2
 A|We use CI for builds and unit tests|1
 A|We don't use CI|0
+
+Q|Do you run regression tests?|ENGINEERING
+A|We have a comprehensive suite of automated regression tests|3
+A|We have a comprehensive suite of regression tests, some of which are automated|2
+A|We have some regression tests|1
+A|We have no regression tests|0
 
 Q|Do you automate your releases?|ENGINEERING
 A|Our releases are completely automated|3

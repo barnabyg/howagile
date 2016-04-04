@@ -9,7 +9,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import com.bhgagile.howagile.model.Answer;
 import com.bhgagile.howagile.model.Category;
@@ -68,7 +67,9 @@ public final class QuestionsHelper {
                 continue;
             }
 
+            //CHECKSTYLE.OFF
             final String[] parsedStr = str.split("\\|");
+            //CHECKSTYLE.ON
 
             if (parsedStr[0].equals("Q")) {
 
@@ -107,7 +108,9 @@ public final class QuestionsHelper {
 
             final String line = strings.get(i);
 
+            //CHECKSTYLE.OFF
             final String[] parsedAnswer = line.split("\\|");
+            //CHECKSTYLE.ON
 
             final Answer answer = new Answer(parsedAnswer[1],
                                     i, Integer.parseInt(parsedAnswer[2]));
@@ -115,7 +118,9 @@ public final class QuestionsHelper {
             answers.put(i, answer);
         }
 
+        //CHECKSTYLE.OFF
         final String[] parsedQuestion = strings.get(0).split("\\|");
+        //CHECKSTYLE.ON
 
         final Question question = new Question(
              parsedQuestion[1], Category.valueOf(parsedQuestion[2]), answers);
@@ -161,9 +166,7 @@ public final class QuestionsHelper {
                     inReader.close();
                 }
             } catch (IOException ex) {
-                // no action on finally block error
-                // but should log this really
-                Logger.getLogger("");
+                throw new HelperException(ex);
             }
         }
 
