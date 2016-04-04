@@ -12,35 +12,34 @@
 
     <form:form modelAttribute="questionModel" method="post" action="results.go">
 
-    <c:forEach begin="0" end="10" varStatus="loop">
-        Index: ${loop.index}<br/>
-    </c:forEach>
-
-    <br/>
-
-    <table>
-      <tr><td>Page number:</td><td><c:out value="${questionModel.pageNumber}"/></td></tr>
-      <tr><td>Questions per page:</td><td><c:out value="${questionModel.questionsPerPage}"/></td></tr>
-      <tr><td>Question count:</td><td><c:out value="${questionModel.questionCount}"/></td></tr>
-    </table>
+<!--     <table> -->
+<%--       <tr><td>Page number:</td><td><c:out value="${questionModel.pageNumber}"/></td></tr> --%>
+<%--       <tr><td>Questions per page:</td><td><c:out value="${questionModel.questionsPerPage}"/></td></tr> --%>
+<%--       <tr><td>Question count:</td><td><c:out value="${questionModel.questionCount}"/></td></tr> --%>
+<!--     </table> -->
 
     <table>
-      <c:forEach items="${questionModel.questionMap}" begin="0" end="3" var="currQue" varStatus="queIndex">
+      <c:forEach items="${questionModel.questionMap}" begin="0" end="${questionModel.questionCount}" var="currQue" varStatus="queIndex">
           <tr>
               <td collspan="2">
                   <form:hidden path="questionMap[${queIndex.count}].question"/>
-                  <label></label><c:out value="${currQue.value.question}"/><br/>
+                  <c:if test="${queIndex.count > 0 && queIndex.count < 10}">
+                    <c:out value="${currQue.value.question}"/>
+                  </c:if>
               </td>
           </tr>
+
               <c:forEach items="${currQue.value.answerMap}" var="opt" varStatus="optionIndex">
-          <tr>
-              <td>
-                  <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerText"/>
-                  <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerKey"/>
-  
-                  <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer" value="${opt.value.answerKey}" label="${opt.value.answerText}"/> 
-              </td>
-          </tr>
+                <tr>
+                    <td>
+                        <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerText"/>
+                        <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerKey"/>
+        
+                        <c:if test="${queIndex.count > 0 && queIndex.count < 10}">
+                          <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer" value="${opt.value.answerKey}" label="${opt.value.answerText}"/>                   
+                        </c:if>
+                    </td>
+                </tr>
               </c:forEach>
           <tr><td collspan="2">&nbsp;</td></tr>
       </c:forEach>
