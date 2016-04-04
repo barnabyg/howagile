@@ -2,13 +2,29 @@ Q|Are your teams self-organising?|TEAM
 A|Our teams are totally self-organising|3
 A|Our teams are mostly self-organising|2
 A|We have a manager or a team leader in each team|1
-A|Our managers/leaders are outside the team but they control what goes on in the team|0
+A|Our managers are outside the team but they control what goes on inside it|0
 
 Q|What is your usual team size?|TEAM
 A|All teams  have from 3 to 9 members|3
 A|Some teams have more than 9 or less than 3 members|2
 A|Most teams have more than 9 or less than 3 members|1
 A|All teams have more than 9 or less than 3 members|0
+
+Q|How do you report progress to management?|COMMUNICATION
+A|Our Scrum process is transparent, we have no need for other forms of reporting|3
+A|We report verbally|1
+A|We update report documents or report emails|0
+
+Q|Who is your Product Owner?|PRODUCT
+A|We have a Product Owner from the business who spends 50% or more of their time working with the Scrum Team|3
+A|We have a Product Owner from the business who spends less than 50% of their time working with the Scrum Team|2
+A|Our Product Owner is not a business user|0
+
+Q|Do you define business value?|PRODUCT
+A|We have an organisation-wide definition of value and all stories are assigned a business value|3
+A|We have various measures of value, but all stories are assigned a business value|2
+A|Some stories are assigned business value|1
+A|No stories are assigned business value|0
 
 Q|Do you use continuous integration (CI)?|ENGINEERING
 A|We use CI for everything (builds, unit tests, functional tests, code quality checks, perf. tests, etc.)|3
@@ -21,3 +37,8 @@ A|Our releases are completely automated|3
 A|Our releases are automated but we include some manual checks|2
 A|Our releases are partially automated|1
 A|We have no release automation|0
+
+Q|How often do you do releases?|ENGINEERING
+A|We have a releasable product every sprint|3
+A|We have a releasable product every 2 sprints|1
+A|We have a releasable product every 3 or more sprints|0
