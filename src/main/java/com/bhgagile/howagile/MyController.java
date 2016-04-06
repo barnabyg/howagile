@@ -7,8 +7,6 @@
  */
 package com.bhgagile.howagile;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.bhgagile.howagile.model.Answer;
-import com.bhgagile.howagile.model.Question;
 import com.bhgagile.howagile.model.QuestionModel;
 
 /**
@@ -43,7 +39,7 @@ public final class MyController {
     }
 
     /**
-     * Request handler for home page.
+     * Request handler for questions page.
      *
      * @param questionModel param
      * @param model model
@@ -61,20 +57,53 @@ public final class MyController {
     }
 
     /**
-     * Request handler for login page submit.
+     * Request handler for questions page submit.
      *
      * @param questionModel param
      * @param model model
      * @return home destination page
      */
-    @RequestMapping(method = RequestMethod.POST, value = "/next")
+    @RequestMapping(
+            method = RequestMethod.POST, value = "/next", params = "Next >>")
     public String nextPage(
         @ModelAttribute(value = "questionModel")
                 final QuestionModel questionModel, final Model model) {
 
         questionModel.setPageNumber(questionModel.getPageNumber() + 1);
 
-        printQuestionSet(questionModel.getQuestionMap());
+        return "home";
+    }
+
+    /**
+     * Request handler for questions page submit.
+     *
+     * @param questionModel param
+     * @param model model
+     * @return home destination page
+     */
+    @RequestMapping(
+            method = RequestMethod.POST, value = "/next", params = "Results >>")
+    public String resultsPage(
+        @ModelAttribute(value = "questionModel")
+                final QuestionModel questionModel, final Model model) {
+
+        return "results";
+    }
+
+    /**
+     * Request handler for questions page submit.
+     *
+     * @param questionModel param
+     * @param model model
+     * @return home destination page
+     */
+    @RequestMapping(
+          method = RequestMethod.POST, value = "/next", params = "<< Previous")
+    public String previousPage(
+        @ModelAttribute(value = "questionModel")
+                final QuestionModel questionModel, final Model model) {
+
+        questionModel.setPageNumber(questionModel.getPageNumber() - 1);
 
         return "home";
     }
@@ -92,25 +121,5 @@ public final class MyController {
                 final QuestionModel questionModel, final Model model) {
 
         return "results";
-    }
-
-    /**
-     * Print out the contents of a question map.
-     * @param list map of questions
-     */
-    private void printQuestionSet(final Map<Integer, Question> list) {
-
-        for (Integer key: list.keySet()) {
-            final Question question = (Question) list.get(key);
-            System.out.println(question.getQuestion());
-
-            for (Integer answerKey: question.getAnswerMap().keySet()) {
-
-                final Answer answer
-                    = (Answer) question.getAnswerMap().get(answerKey);
-
-                System.out.println(answer.getAnswerText());
-            }
-        }
     }
 }

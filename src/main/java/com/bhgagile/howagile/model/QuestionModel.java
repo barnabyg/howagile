@@ -78,4 +78,38 @@ public final class QuestionModel {
 
         return count;
     }
+
+    /**
+     * @return total number of pages
+     */
+    public int getTotalPages() {
+        return (int) this.getQuestionCount() / this.questionsPerPage;
+    }
+
+    /**
+     * @return total score
+     */
+    public int getTotalScore() {
+
+        int total = 0;
+
+        for (Integer key: this.questionMap.keySet()) {
+            final Question question = (Question) this.questionMap.get(key);
+
+            System.out.println(
+                 "selected answer is " + question.getSelectedAnswer());
+
+            if (question.getSelectedAnswer() != null
+                        && question.getSelectedAnswer() > 0) {
+
+                final Answer answer
+                     = (Answer) question.getAnswerMap().get(
+                                             question.getSelectedAnswer());
+
+                total = total + answer.getPoints();
+            }
+        }
+
+        return total;
+    }
 }
