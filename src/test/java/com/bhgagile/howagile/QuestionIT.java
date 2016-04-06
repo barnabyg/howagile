@@ -44,7 +44,7 @@ public final class QuestionIT {
 
         driver = new FirefoxDriver();
 
-        driver.get("http://localhost:7070/home.go");
+        driver.get("http://localhost:7070/next.go");
     }
 
     /**

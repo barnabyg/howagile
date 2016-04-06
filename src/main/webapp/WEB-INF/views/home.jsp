@@ -10,20 +10,29 @@
 
   <body>
 
-    <form:form modelAttribute="questionModel" method="post" action="results.go">
+    <form:form modelAttribute="questionModel" method="post" action="next.go">
 
-<!--     <table> -->
-<%--       <tr><td>Page number:</td><td><c:out value="${questionModel.pageNumber}"/></td></tr> --%>
-<%--       <tr><td>Questions per page:</td><td><c:out value="${questionModel.questionsPerPage}"/></td></tr> --%>
-<%--       <tr><td>Question count:</td><td><c:out value="${questionModel.questionCount}"/></td></tr> --%>
-<!--     </table> -->
+    <table>
+      <tr><td>Page number:</td><td><c:out value="${questionModel.pageNumber}"/></td></tr>
+      <tr><td>Questions per page:</td><td><c:out value="${questionModel.questionsPerPage}"/></td></tr>
+      <tr><td>Question count:</td><td><c:out value="${questionModel.questionCount}"/></td></tr>
+    </table>
+
+    <br/><br/>
+
+    <c:set var="startQ" value="${(questionModel.pageNumber - 1) * questionModel.questionsPerPage}" />
+    <c:set var="endQ" value="${questionModel.pageNumber * questionModel.questionsPerPage}" />
+
+    <c:out value="StartQ = ${startQ}" /><br/>
+    <c:out value="EndQ = ${endQ}" /><br/><br/>
 
     <table>
       <c:forEach items="${questionModel.questionMap}" begin="0" end="${questionModel.questionCount}" var="currQue" varStatus="queIndex">
+
           <tr>
               <td collspan="2">
                   <form:hidden path="questionMap[${queIndex.count}].question"/>
-                  <c:if test="${queIndex.count > 0 && queIndex.count < 10}">
+                  <c:if test="${queIndex.count > startQ && queIndex.count <= endQ}">
                     <c:out value="${currQue.value.question}"/>
                   </c:if>
               </td>
@@ -35,7 +44,7 @@
                         <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerText"/>
                         <form:hidden path="questionMap[${queIndex.count}].answerMap[${optionIndex.count}].answerKey"/>
         
-                        <c:if test="${queIndex.count > 0 && queIndex.count < 10}">
+                        <c:if test="${queIndex.count > startQ && queIndex.count <= endQ}">
                           <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer" value="${opt.value.answerKey}" label="${opt.value.answerText}"/>                   
                         </c:if>
                     </td>

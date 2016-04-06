@@ -18,7 +18,7 @@ public final class QuestionModel {
     /**
      * Number of questions on a page.
      */
-    private int questionsPerPage = 2;
+    private int questionsPerPage = 3;
     /**
      * List of questions.
      */
