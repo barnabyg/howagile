@@ -96,9 +96,6 @@ public final class QuestionModel {
         for (Integer key: this.questionMap.keySet()) {
             final Question question = (Question) this.questionMap.get(key);
 
-            System.out.println(
-                 "selected answer is " + question.getSelectedAnswer());
-
             if (question.getSelectedAnswer() != null
                         && question.getSelectedAnswer() > 0) {
 

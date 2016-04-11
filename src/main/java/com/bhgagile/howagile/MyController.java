@@ -69,7 +69,27 @@ public final class MyController {
         @ModelAttribute(value = "questionModel")
                 final QuestionModel questionModel, final Model model) {
 
+        // increment the page counter
         questionModel.setPageNumber(questionModel.getPageNumber() + 1);
+
+        return "home";
+    }
+
+    /**
+     * Request handler for questions page submit.
+     *
+     * @param questionModel param
+     * @param model model
+     * @return home destination page
+     */
+    @RequestMapping(
+          method = RequestMethod.POST, value = "/next", params = "<< Previous")
+    public String previousPage(
+        @ModelAttribute(value = "questionModel")
+                final QuestionModel questionModel, final Model model) {
+
+        // decrement the page counter
+        questionModel.setPageNumber(questionModel.getPageNumber() - 1);
 
         return "home";
     }
@@ -88,24 +108,6 @@ public final class MyController {
                 final QuestionModel questionModel, final Model model) {
 
         return "results";
-    }
-
-    /**
-     * Request handler for questions page submit.
-     *
-     * @param questionModel param
-     * @param model model
-     * @return home destination page
-     */
-    @RequestMapping(
-          method = RequestMethod.POST, value = "/next", params = "<< Previous")
-    public String previousPage(
-        @ModelAttribute(value = "questionModel")
-                final QuestionModel questionModel, final Model model) {
-
-        questionModel.setPageNumber(questionModel.getPageNumber() - 1);
-
-        return "home";
     }
 
     /**
