@@ -12,18 +12,19 @@
 
     <form:form modelAttribute="questionModel" method="post" action="next.go">
 
-    <c:set var="startQ" value="${(questionModel.pageNumber - 1) * questionModel.questionsPerPage}" />
-    <c:set var="endQ" value="${(questionModel.pageNumber * questionModel.questionsPerPage) - 1}" />
+    <c:set var="startQ" value="${1 + ((questionModel.pageNumber - 1) * questionModel.questionsPerPage)}" />
+    <c:set var="endQ" value="${(questionModel.pageNumber * questionModel.questionsPerPage)}" />
 
     <c:out value="StartQ = ${startQ}" /><br/>
     <c:out value="EndQ = ${endQ}" /><br/><br/>
 
     <table>
-      <c:forEach items="${questionModel.questionMap}" begin="${startQ}" end="${endQ}" var="currQue" varStatus="queIndex">
+      <c:forEach items="${questionModel.questionMap}" begin="1" end="${questionModel.questionCount}" var="currQue" varStatus="queIndex">
 
+          <c:if test="${queIndex.count >= startQ && queIndex.count <= endQ}">
           <tr>
               <td collspan="2">
-                  <c:out value="${currQue.value.question}"/>
+                  <c:out value="${queIndex.count}"/>.&nbsp;<c:out value="${currQue.value.question}"/>
               </td>
           </tr>
 
@@ -35,6 +36,7 @@
                 </tr>
               </c:forEach>
           <tr><td collspan="2">&nbsp;</td></tr>
+          </c:if>
       </c:forEach>
     </table>
 
