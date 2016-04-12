@@ -54,7 +54,7 @@ public final class QuestionIT {
     public void questionTest() {
 
         assertEquals(
-                "Home page title invalid", "Welcome", driver.getTitle());
+          "Questions page title invalid", "Agile Questions", driver.getTitle());
 
         try {
             Thread.sleep(DELAY);
@@ -62,12 +62,28 @@ public final class QuestionIT {
             // no action required
         }
 
+        clickSubmit(driver, "submitNextId");
+
+        clickSubmit(driver, "submitNextId");
+
+        clickSubmit(driver, "submitNextId");
+
+        clickSubmit(driver, "submitResultsId");
+    }
+
+    /**
+     * Click on the submit button with the given ID.
+     * @param driver web driver
+     * @param submitId button id
+     */
+    private void clickSubmit(final WebDriver driver, final String submitId) {
+
         final WebElement element =
-                driver.findElement(By.id("submitId"));
+                driver.findElement(By.id(submitId));
 
         element.sendKeys(Keys.RETURN);
 
-        ExpectedCondition<Boolean> pageLoadCondition = new
+        final ExpectedCondition<Boolean> pageLoadCondition = new
                 ExpectedCondition<Boolean>() {
                     public Boolean apply(final WebDriver driver) {
                         return ((JavascriptExecutor) driver).executeScript(
@@ -75,7 +91,7 @@ public final class QuestionIT {
                     }
                 };
 
-        WebDriverWait wait = new WebDriverWait(driver, DELAY);
+        final WebDriverWait wait = new WebDriverWait(driver, DELAY);
 
         wait.until(pageLoadCondition);
 

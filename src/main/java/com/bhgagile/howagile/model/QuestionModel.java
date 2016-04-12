@@ -109,4 +109,39 @@ public final class QuestionModel {
 
         return total;
     }
+
+    /**
+     * @return maximum possible score
+     */
+    public int getMaxPossibleScore() {
+
+        int maxScore = 0;
+
+        for (Integer key: this.questionMap.keySet()) {
+            final Question question = (Question) this.questionMap.get(key);
+
+            maxScore = maxScore + findMaxPointsAnswer(question);
+        }
+
+        return maxScore;
+    }
+
+    /**
+     * Find the highest scoring answer for a given question.
+     * @param question the question to analyse
+     * @return points for highest score answer
+     */
+    private int findMaxPointsAnswer(final Question question) {
+
+        int maxPoints = 0;
+
+        for (Integer key: question.getAnswerMap().keySet()) {
+            final Answer answer = (Answer) question.getAnswerMap().get(key);
+
+            if (answer.getPoints() > maxPoints) {
+                maxPoints = answer.getPoints();
+            }
+        }
+        return maxPoints;
+    }
 }

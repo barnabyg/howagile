@@ -2,6 +2,6 @@
 
 <html>
   <body>
-    <p>Total Score: <c:out value="${questionModel.totalScore}" /></p>
+    <p>Score: <c:out value="${questionModel.totalScore}" /> out of <c:out value="${questionModel.maxPossibleScore}" /></p>
   </body>
 </html>

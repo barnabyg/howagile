@@ -5,7 +5,7 @@
 
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Welcome</title>
+    <title>Agile Questions</title>
   </head>
 
   <body>
@@ -15,8 +15,8 @@
     <c:set var="startQ" value="${1 + ((questionModel.pageNumber - 1) * questionModel.questionsPerPage)}" />
     <c:set var="endQ" value="${(questionModel.pageNumber * questionModel.questionsPerPage)}" />
 
-    <c:out value="StartQ = ${startQ}" /><br/>
-    <c:out value="EndQ = ${endQ}" /><br/><br/>
+<%--     <c:out value="StartQ = ${startQ}" /><br/> --%>
+<%--     <c:out value="EndQ = ${endQ}" /><br/><br/> --%>
 
     <table>
       <c:forEach items="${questionModel.questionMap}" begin="1" end="${questionModel.questionCount}" var="currQue" varStatus="queIndex">
@@ -43,9 +43,16 @@
     <br/><br/>
 
     <c:choose>
-      <c:when test="${questionModel.pageNumber == questionModel.totalPages}"><input type="submit" id="submitId" name="Results >>" value="Results >>" /></c:when>
-      <c:when test="${questionModel.pageNumber == 1}"><input type="submit" id="submitId" name="Next >>" value="Next >>" /></c:when>
-      <c:when test="${questionModel.pageNumber < questionModel.totalPages}"><input type="submit" id="submitId" name="<< Previous" value="<< Previous" /><input type="submit" id="submitId" name="Next >>" value="Next >>" /></c:when>
+      <c:when test="${questionModel.pageNumber == questionModel.totalPages}">
+        <input type="submit" id="submitResultsId" name="Results >>" value="Results >>" />
+      </c:when>
+      <c:when test="${questionModel.pageNumber == 1}">
+        <input type="submit" id="submitNextId" name="Next >>" value="Next >>" />
+      </c:when>
+      <c:when test="${questionModel.pageNumber < questionModel.totalPages}">
+        <input type="submit" id="submitPreviousId" name="<< Previous" value="<< Previous" />
+        <input type="submit" id="submitNextId" name="Next >>" value="Next >>" />
+      </c:when>
     </c:choose>
 
     <br/><br/>
