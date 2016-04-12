@@ -19,7 +19,7 @@
 <%--     <c:out value="EndQ = ${endQ}" /><br/><br/> --%>
 
     <table>
-      <c:forEach items="${questionModel.questionMap}" begin="1" end="${questionModel.questionCount}" var="currQue" varStatus="queIndex">
+      <c:forEach items="${questionModel.questionMap}" begin="0" end="${questionModel.questionCount}" var="currQue" varStatus="queIndex">
 
           <c:if test="${queIndex.count >= startQ && queIndex.count <= endQ}">
           <tr>
