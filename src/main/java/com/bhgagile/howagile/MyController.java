@@ -25,6 +25,19 @@ import com.bhgagile.howagile.model.QuestionModel;
 public final class MyController {
 
     /**
+     * Home page.
+     */
+    public static final String HOME_PAGE = "home";
+    /**
+     * Questions page.
+     */
+    public static final String QUESTION_PAGE = "questions";
+    /**
+     * Results page.
+     */
+    public static final String RESULTS_PAGE = "results";
+
+    /**
      * Filename of the question file.
      */
     private static final String QUESTION_FILE = "questions.txt";
@@ -45,7 +58,7 @@ public final class MyController {
      * @param model model
      * @return str
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/next")
+    @RequestMapping(method = RequestMethod.GET, value = "/home")
     public String homeRequest(
         @ModelAttribute(value = "questionModel")
                 final QuestionModel questionModel, final Model model) {
@@ -53,7 +66,7 @@ public final class MyController {
         questionModel.setQuestionMap(
                 QuestionsHelper.loadQuestionMap(QUESTION_FILE));
 
-        return "home";
+        return HOME_PAGE;
     }
 
     /**
@@ -64,7 +77,7 @@ public final class MyController {
      * @return home destination page
      */
     @RequestMapping(
-            method = RequestMethod.POST, value = "/next", params = "Next >>")
+            method = RequestMethod.POST, value = "/next", params = "Next")
     public String nextPage(
         @ModelAttribute(value = "questionModel")
                 final QuestionModel questionModel, final Model model) {
@@ -72,7 +85,7 @@ public final class MyController {
         // increment the page counter
         questionModel.setPageNumber(questionModel.getPageNumber() + 1);
 
-        return "home";
+        return QUESTION_PAGE;
     }
 
     /**
@@ -83,7 +96,7 @@ public final class MyController {
      * @return home destination page
      */
     @RequestMapping(
-          method = RequestMethod.POST, value = "/next", params = "<< Previous")
+          method = RequestMethod.POST, value = "/next", params = "Previous")
     public String previousPage(
         @ModelAttribute(value = "questionModel")
                 final QuestionModel questionModel, final Model model) {
@@ -91,7 +104,7 @@ public final class MyController {
         // decrement the page counter
         questionModel.setPageNumber(questionModel.getPageNumber() - 1);
 
-        return "home";
+        return QUESTION_PAGE;
     }
 
     /**
@@ -102,12 +115,12 @@ public final class MyController {
      * @return home destination page
      */
     @RequestMapping(
-            method = RequestMethod.POST, value = "/next", params = "Results >>")
+            method = RequestMethod.POST, value = "/next", params = "Results")
     public String resultsPage(
         @ModelAttribute(value = "questionModel")
                 final QuestionModel questionModel, final Model model) {
 
-        return "results";
+        return RESULTS_PAGE;
     }
 
     /**

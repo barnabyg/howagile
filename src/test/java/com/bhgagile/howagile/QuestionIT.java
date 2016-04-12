@@ -30,7 +30,7 @@ public final class QuestionIT {
     /**
      * Delay in ms.
      */
-    private static final int DELAY = 2000;
+    private static final int DELAY = 1500;
     /**
      * Web driver.
      */
@@ -44,7 +44,7 @@ public final class QuestionIT {
 
         driver = new FirefoxDriver();
 
-        driver.get("http://localhost:7070/next.go");
+        driver.get("http://localhost:7070/home.go");
     }
 
     /**
@@ -54,13 +54,16 @@ public final class QuestionIT {
     public void questionTest() {
 
         assertEquals(
-          "Questions page title invalid", "Agile Questions", driver.getTitle());
+            "Questions page title invalid",
+              "How Agile Are You?", driver.getTitle());
 
         try {
             Thread.sleep(DELAY);
         } catch (InterruptedException e) {
             // no action required
         }
+
+        clickSubmit(driver, "submitNextId");
 
         clickSubmit(driver, "submitNextId");
 

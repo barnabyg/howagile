@@ -7,7 +7,7 @@
  <display-name>How agile are you?</display-name>
 
  <welcome-file-list>  
-   <welcome-file>next.go</welcome-file>  
+   <welcome-file>home.go</welcome-file>  
  </welcome-file-list>  
 
  <servlet>

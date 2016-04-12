@@ -26,7 +26,7 @@ public final class QuestionModel {
     /**
      * Page number.
      */
-    private int pageNumber = 1;
+    private int pageNumber = 0;
 
     /**
      * @param questionMap list of question
