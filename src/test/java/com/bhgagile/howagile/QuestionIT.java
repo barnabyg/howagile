@@ -30,11 +30,11 @@ public final class QuestionIT {
     /**
      * Delay in ms.
      */
-    private static final int DELAY = 1000;
+    private static final int DELAY = 600;
     /**
      * Short delay in ms.
      */
-    private static final int SHORT_DELAY = 300;
+    private static final int SHORT_DELAY = 200;
     /**
      * Web driver.
      */
@@ -69,27 +69,35 @@ public final class QuestionIT {
 
         clickSubmit(driver, "submitNextId");
 
-        clickRadioButton(driver, "questionMap1.selectedAnswer1");
-        clickRadioButton(driver, "questionMap2.selectedAnswer1");
-        clickRadioButton(driver, "questionMap3.selectedAnswer1");
+        clickSubmit(driver, "buttonReveal");
+
+        selectRadioButton(driver, "questionMap1.selectedAnswer1");
+        selectRadioButton(driver, "questionMap2.selectedAnswer1");
+        selectRadioButton(driver, "questionMap3.selectedAnswer1");
 
         clickSubmit(driver, "submitNextId");
 
-        clickRadioButton(driver, "questionMap4.selectedAnswer1");
-        clickRadioButton(driver, "questionMap5.selectedAnswer1");
-        clickRadioButton(driver, "questionMap6.selectedAnswer1");
+        clickSubmit(driver, "buttonReveal");
+
+        selectRadioButton(driver, "questionMap4.selectedAnswer1");
+        selectRadioButton(driver, "questionMap5.selectedAnswer1");
+        selectRadioButton(driver, "questionMap6.selectedAnswer1");
 
         clickSubmit(driver, "submitNextId");
 
-        clickRadioButton(driver, "questionMap7.selectedAnswer1");
-        clickRadioButton(driver, "questionMap8.selectedAnswer1");
-        clickRadioButton(driver, "questionMap9.selectedAnswer1");
+        clickSubmit(driver, "buttonReveal");
+
+        selectRadioButton(driver, "questionMap7.selectedAnswer1");
+        selectRadioButton(driver, "questionMap8.selectedAnswer1");
+        selectRadioButton(driver, "questionMap9.selectedAnswer1");
 
         clickSubmit(driver, "submitNextId");
 
-        clickRadioButton(driver, "questionMap10.selectedAnswer1");
-        clickRadioButton(driver, "questionMap11.selectedAnswer1");
-        clickRadioButton(driver, "questionMap12.selectedAnswer1");
+        clickSubmit(driver, "buttonReveal");
+
+        selectRadioButton(driver, "questionMap10.selectedAnswer1");
+        selectRadioButton(driver, "questionMap11.selectedAnswer1");
+        selectRadioButton(driver, "questionMap12.selectedAnswer1");
 
         clickSubmit(driver, "submitResultsId");
     }
@@ -99,7 +107,7 @@ public final class QuestionIT {
      * @param driver web driver
      * @param buttonId radio button id
      */
-    private void clickRadioButton(
+    private void selectRadioButton(
             final WebDriver driver, final String buttonId) {
 
         final WebElement element =
