@@ -30,7 +30,11 @@ public final class QuestionIT {
     /**
      * Delay in ms.
      */
-    private static final int DELAY = 1500;
+    private static final int DELAY = 1000;
+    /**
+     * Short delay in ms.
+     */
+    private static final int SHORT_DELAY = 300;
     /**
      * Web driver.
      */
@@ -54,7 +58,7 @@ public final class QuestionIT {
     public void questionTest() {
 
         assertEquals(
-            "Questions page title invalid",
+            "Home page title is invalid",
               "How Agile Are You?", driver.getTitle());
 
         try {
@@ -65,13 +69,49 @@ public final class QuestionIT {
 
         clickSubmit(driver, "submitNextId");
 
-        clickSubmit(driver, "submitNextId");
+        clickRadioButton(driver, "questionMap1.selectedAnswer1");
+        clickRadioButton(driver, "questionMap2.selectedAnswer1");
+        clickRadioButton(driver, "questionMap3.selectedAnswer1");
 
         clickSubmit(driver, "submitNextId");
 
+        clickRadioButton(driver, "questionMap4.selectedAnswer1");
+        clickRadioButton(driver, "questionMap5.selectedAnswer1");
+        clickRadioButton(driver, "questionMap6.selectedAnswer1");
+
         clickSubmit(driver, "submitNextId");
+
+        clickRadioButton(driver, "questionMap7.selectedAnswer1");
+        clickRadioButton(driver, "questionMap8.selectedAnswer1");
+        clickRadioButton(driver, "questionMap9.selectedAnswer1");
+
+        clickSubmit(driver, "submitNextId");
+
+        clickRadioButton(driver, "questionMap10.selectedAnswer1");
+        clickRadioButton(driver, "questionMap11.selectedAnswer1");
+        clickRadioButton(driver, "questionMap12.selectedAnswer1");
 
         clickSubmit(driver, "submitResultsId");
+    }
+
+    /**
+     * Click on a radio button with the given ID.
+     * @param driver web driver
+     * @param buttonId radio button id
+     */
+    private void clickRadioButton(
+            final WebDriver driver, final String buttonId) {
+
+        final WebElement element =
+                driver.findElement(By.id(buttonId));
+
+        element.click();
+
+        try {
+            Thread.sleep(SHORT_DELAY);
+        } catch (InterruptedException e) {
+            // no action required
+        }
     }
 
     /**

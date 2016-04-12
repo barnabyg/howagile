@@ -18,6 +18,8 @@
 
     <p>At the end of the questionnaire you will be given results showing how agile your organisation is.</p>
 
+    <br/><br/>
+
     <form:form modelAttribute="questionModel" method="post" action="next.go">
 
       <input type="submit" id="submitNextId" name="Next" value="Next >>" />
