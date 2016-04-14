@@ -200,14 +200,17 @@ public final class MyController {
             total = questionModel.getTotalScore(Category.TEAM);
             outOf = questionModel.getMaxPossibleScore(Category.TEAM);
             label = "Team Score";
+            break;
         case "product":
             total = questionModel.getTotalScore(Category.PRODUCT);
             outOf = questionModel.getMaxPossibleScore(Category.PRODUCT);
             label = "Product Score";
+            break;
         case "engineering":
             total = questionModel.getTotalScore(Category.ENGINEERING);
             outOf = questionModel.getMaxPossibleScore(Category.ENGINEERING);
             label = "Engineering Score";
+            break;
         case "communication":
             total = questionModel.getTotalScore(Category.COMMUNICATION);
             outOf = questionModel.getMaxPossibleScore(Category.COMMUNICATION);
