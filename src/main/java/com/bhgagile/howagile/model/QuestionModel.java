@@ -111,6 +111,32 @@ public final class QuestionModel {
     }
 
     /**
+     * @param category question category
+     * @return total score for a given category of questions
+     */
+    public int getTotalScore(final Category category) {
+
+        int total = 0;
+
+        for (Integer key: this.questionMap.keySet()) {
+            final Question question = (Question) this.questionMap.get(key);
+
+            if (question.getCategory().equals(category)
+                        && question.getSelectedAnswer() != null
+                        && question.getSelectedAnswer() > 0) {
+
+                final Answer answer
+                     = (Answer) question.getAnswerMap().get(
+                                             question.getSelectedAnswer());
+
+                total = total + answer.getPoints();
+            }
+        }
+
+        return total;
+    }
+
+    /**
      * @return maximum possible score
      */
     public int getMaxPossibleScore() {
@@ -121,6 +147,25 @@ public final class QuestionModel {
             final Question question = (Question) this.questionMap.get(key);
 
             maxScore = maxScore + findMaxPointsAnswer(question);
+        }
+
+        return maxScore;
+    }
+
+    /**
+     * @param category question category
+     * @return maximum possible score
+     */
+    public int getMaxPossibleScore(final Category category) {
+
+        int maxScore = 0;
+
+        for (Integer key: this.questionMap.keySet()) {
+            final Question question = (Question) this.questionMap.get(key);
+
+            if (question.getCategory().equals(category)) {
+                maxScore = maxScore + findMaxPointsAnswer(question);
+            }
         }
 
         return maxScore;

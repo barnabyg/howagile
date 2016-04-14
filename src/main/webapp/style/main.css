@@ -1,0 +1,17 @@
+html {
+  font-size: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.homeIntroduction {
+    width: 800px;
+    margin: 20px;
+/*    border: 1px solid #ffffff; */
+}

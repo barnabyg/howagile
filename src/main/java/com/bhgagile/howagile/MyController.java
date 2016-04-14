@@ -7,11 +7,19 @@
  */
 package com.bhgagile.howagile;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.jfree.chart.ChartUtilities;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.bhgagile.howagile.model.QuestionModel;
@@ -24,6 +32,14 @@ import com.bhgagile.howagile.model.QuestionModel;
 @SessionAttributes("questionModel")
 public final class MyController {
 
+    /**
+     * Width.
+     */
+    private static final int WIDTH = 800;
+    /**
+     * Height.
+     */
+    private static final int HEIGHT = 400;
     /**
      * Home page.
      */
@@ -136,5 +152,32 @@ public final class MyController {
                 final QuestionModel questionModel, final Model model) {
 
         return "results";
+    }
+
+    /**
+     * Draw a chart.
+     * @param chartType chart type
+     * @param map map
+     * @param request HTTP request
+     * @param response HTTP response
+     */
+    @RequestMapping(value = "/chart", method = RequestMethod.GET)
+    public void showChart(
+            @RequestParam("chartType") final String chartType,
+            final ModelMap map,
+            final HttpServletRequest request,
+            final HttpServletResponse response) {
+
+        response.setContentType("image/png");
+
+        try {
+
+            ChartUtilities.writeChartAsPNG(
+                    response.getOutputStream(),
+                    ChartHelper.showChart(), WIDTH, HEIGHT);
+
+        } catch (IOException ioe) {
+            // nothing
+        }
     }
 }
