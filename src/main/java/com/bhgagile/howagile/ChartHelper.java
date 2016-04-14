@@ -27,18 +27,21 @@ public final class ChartHelper {
 
     /**
      * Show chart.
+     * @param label label for the chart
+     * @param score the score achieved
+     * @param outOf the maximum possible score
      * @return chart object
      */
-    public static JFreeChart showChart() {
+    public static JFreeChart showChart(
+            final String label, final int score, final int outOf) {
 
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        dataset.addValue(4.0, "Java", "2005");
-        dataset.addValue(9.0, "Java", "2006");
-        dataset.addValue(7.0, "Java", "2007");
+        dataset.addValue(score, "", "Your Score");
+        dataset.addValue(outOf, "", "Ideal Score");
 
-        JFreeChart chart = ChartFactory.createBarChart(
-                "blah", "badger", "frog", dataset,
+        final JFreeChart chart = ChartFactory.createBarChart(
+                label, "", "", dataset,
                 PlotOrientation.VERTICAL, true, true, true);
 
         return chart;

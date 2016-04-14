@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.bhgagile.howagile.model.Category;
 import com.bhgagile.howagile.model.QuestionModel;
 
 /**
@@ -33,13 +34,21 @@ import com.bhgagile.howagile.model.QuestionModel;
 public final class MyController {
 
     /**
-     * Width.
+     * Width of a full sized chart.
      */
-    private static final int WIDTH = 800;
+    private static final int FULL_WIDTH = 500;
     /**
-     * Height.
+     * Height of a full sized chart.
      */
-    private static final int HEIGHT = 400;
+    private static final int FULL_HEIGHT = 300;
+    /**
+     * Width of a small chart.
+     */
+    private static final int SMALL_WIDTH = 400;
+    /**
+     * Height of a small chart.
+     */
+    private static final int SMALL_HEIGHT = 200;
     /**
      * Home page.
      */
@@ -157,27 +166,64 @@ public final class MyController {
     /**
      * Draw a chart.
      * @param chartType chart type
+     * @param questionModel question model
      * @param map map
      * @param request HTTP request
      * @param response HTTP response
      */
     @RequestMapping(value = "/chart", method = RequestMethod.GET)
     public void showChart(
+            @ModelAttribute(value = "questionModel")
             @RequestParam("chartType") final String chartType,
+            final QuestionModel questionModel,
             final ModelMap map,
             final HttpServletRequest request,
             final HttpServletResponse response) {
 
         response.setContentType("image/png");
 
+        int total = 0;
+        int outOf = 0;
+        String label = "";
+        int width = SMALL_WIDTH;
+        int height = SMALL_HEIGHT;
+
+        switch (chartType) {
+        case "total":
+            total = questionModel.getTotalScore();
+            outOf = questionModel.getMaxPossibleScore();
+            label = "Total Score";
+            width = FULL_WIDTH;
+            height = FULL_HEIGHT;
+            break;
+        case "team":
+            total = questionModel.getTotalScore(Category.TEAM);
+            outOf = questionModel.getMaxPossibleScore(Category.TEAM);
+            label = "Team Score";
+        case "product":
+            total = questionModel.getTotalScore(Category.PRODUCT);
+            outOf = questionModel.getMaxPossibleScore(Category.PRODUCT);
+            label = "Product Score";
+        case "engineering":
+            total = questionModel.getTotalScore(Category.ENGINEERING);
+            outOf = questionModel.getMaxPossibleScore(Category.ENGINEERING);
+            label = "Engineering Score";
+        case "communication":
+            total = questionModel.getTotalScore(Category.COMMUNICATION);
+            outOf = questionModel.getMaxPossibleScore(Category.COMMUNICATION);
+            label = "Communication Score";
+            break;
+        default: // no default needed
+        }
+
         try {
 
             ChartUtilities.writeChartAsPNG(
-                    response.getOutputStream(),
-                    ChartHelper.showChart(), WIDTH, HEIGHT);
+              response.getOutputStream(),
+              ChartHelper.showChart(label, total, outOf), width, height);
 
         } catch (IOException ioe) {
-            // nothing
+            response.setContentType("text/html");
         }
     }
 }
