@@ -8,28 +8,6 @@
     <title>Agile Questions</title>
 <!--     <link rel="stylesheet" href="style/main.css" /> -->
 
-<style>
-.scoreDivHidden {
-    display: none;
-}
-
-.scoreDivVisible {
-    display: block;
-}
-</style>
-
-    <script>
-    function revealScores() {
-
-        var x = document.getElementsByClassName('scoreDivHidden');
-
-        for (var i = 0; i < x.length; i++) {
-            //x.item(i).setAttribute('class', 'scoreDivVisible');
-            x[i].style.display = 'block';
-        }
-      }
-    </script>
-
   </head>
 
   <body>
@@ -52,7 +30,7 @@
               <c:forEach items="${currQue.value.answerMap}" var="opt" varStatus="optionIndex">
                 <tr>
                   <td>
-                    <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer" value="${opt.value.answerKey}" label="${opt.value.answerText}"/><div class="scoreDivHidden">Scores&nbsp;<c:out value="${opt.value.points}" />&nbsp;points</div>                   
+                    <form:radiobutton path="questionMap[${queIndex.count}].selectedAnswer" value="${opt.value.answerKey}" label="${opt.value.answerText}"/>&nbsp;(scores&nbsp;<c:out value="${opt.value.points}" />&nbsp;points)                   
                   </td>
                 </tr>
               </c:forEach>
@@ -63,7 +41,6 @@
 
     <br/><br/>
 
-    <input type="button" id="buttonReveal" value="Reveal Scores" onclick="revealScores()"/>&nbsp;&nbsp;
     <c:choose>
       <c:when test="${questionModel.pageNumber == questionModel.totalPages}">
         <input type="submit" id="submitResultsId" name="Results" value="Results >>" />
