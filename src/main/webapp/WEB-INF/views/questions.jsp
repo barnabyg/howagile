@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Agile Questions</title>
-<!--     <link rel="stylesheet" href="style/main.css" /> -->
+    <link rel="stylesheet" href="style/main.css" />
 
   </head>
 

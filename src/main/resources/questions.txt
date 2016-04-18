@@ -1,66 +1,66 @@
 Q|Are your teams self-organising?|TEAM
-A|Our teams are totally self-organising|3
-A|Our teams are mostly self-organising|2
-A|We have a manager or a team leader in each team|1
+A|Our teams are completely self-organising|100
+A|Our teams are mostly self-organising|80
+A|We have a manager or a team leader in each team|0
 A|Our managers are outside the team but they control what goes on inside it|0
 
 Q|What is your usual team size?|TEAM
-A|All teams  have from 3 to 9 members|3
-A|Some teams have more than 9 or less than 3 members|2
-A|Most teams have more than 9 or less than 3 members|1
+A|All teams  have from 3 to 9 members|100
+A|Some teams have more than 9 or less than 3 members|80
+A|Most teams have more than 9 or less than 3 members|10
 A|All teams have more than 9 or less than 3 members|0
 
 Q|Are your teams collocated?|TEAM
-A|The teams are collocated|3
-A|The teams are partially collocated|1
+A|The teams are collocated|100
+A|The teams are partially collocated|80
 A|The teams are not collocated|0
 
 Q|How do you report progress to management?|COMMUNICATION
-A|Our Scrum process is transparent, we have no need for other forms of reporting|3
-A|We report verbally|1
+A|Our Scrum process is transparent, we have no need for other forms of reporting|100
+A|We report verbally|80
 A|We update report documents or report emails|0
 
 Q|How transparent are your teams?|COMMUNICATION
-A|We show sprint progress on task boards and encourage people to attend our sprint reviews|3
-A|We show sprint progress on task boards, but restrict who can attend sprint reviews|2
+A|We show sprint progress on task boards and encourage people to attend our sprint reviews|100
+A|We show sprint progress on task boards, but restrict who can attend sprint reviews|40
 A|We restrict who can attend sprint reviews and we do not have public task boards|0
 
 Q|Who is your Product Owner?|PRODUCT
-A|We have a Product Owner from the business who spends 50% or more of their time working with the Scrum Team|3
-A|We have a Product Owner from the business who spends less than 50% of their time working with the Scrum Team|2
+A|We have a Product Owner from the business who spends 50% or more of their time working with the Scrum Team|100
+A|We have a Product Owner from the business who spends less than 50% of their time working with the Scrum Team|70
 A|Our Product Owner is not a business user|0
 
 Q|Do you measure business value?|PRODUCT
-A|We have an organisation-wide definition of value and all stories are given a business value|3
-A|We have various measures of value, but all stories are given a business value|2
-A|Some stories are given business value|1
+A|We have an organisation-wide definition of value and all stories are given a business value|100
+A|We have various measures of value, but all stories are given a business value|90
+A|Some stories are given business value|40
 A|No stories are given business value|0
 
 Q|Are your user stories business focused?|PRODUCT
-A|All our stories are business focused and have business value|3
-A|Most of our stories are business focused and have business value|2
-A|Some of our stories are business focused, some are technical|1
+A|All our stories are business focused and add business value|100
+A|Most of our stories are business focused and have business value|80
+A|Some of our stories are business focused, some are technical|40
 A|All of our stories are technical|0
 
 Q|Do you use continuous integration (CI)?|ENGINEERING
-A|We use CI for everything (builds, unit tests, functional tests, code quality checks, perf. tests, etc.)|3
-A|We use CI for builds, unit tests and functional tests|2
-A|We use CI for builds and unit tests|1
+A|We use CI for everything (builds, unit tests, functional tests, code quality checks, perf. tests, etc.)|100
+A|We use CI for builds, unit tests and functional tests|70
+A|We use CI for builds and unit tests|50
 A|We don't use CI|0
 
 Q|Do you run regression tests?|ENGINEERING
-A|We have a comprehensive suite of automated regression tests|3
-A|We have a comprehensive suite of regression tests, some of which are automated|2
-A|We have some regression tests|1
+A|We have a comprehensive suite of automated regression tests|100
+A|We have a comprehensive suite of regression tests, some of which are automated|80
+A|We have some regression tests|40
 A|We have no regression tests|0
 
 Q|Do you automate your releases?|ENGINEERING
-A|Our releases are completely automated|3
-A|Our releases are automated but we include some manual checks|2
-A|Our releases are partially automated|1
+A|Our releases are completely automated|100
+A|Our releases are automated but we include some manual checks|80
+A|Our releases are partially automated|60
 A|We have no release automation|0
 
 Q|How often do you do releases?|ENGINEERING
-A|We have a releasable product every sprint|3
-A|We have a releasable product every 2 sprints|1
-A|We have a releasable product every 3 or more sprints|0
+A|We have a releasable product every sprint|100
+A|We have a releasable product every 2-3 sprints|50
+A|We have a releasable product every 4 or more sprints|0
