@@ -38,7 +38,7 @@ A|No stories are given business value|0
 
 Q|Are your user stories business focused?|PRODUCT
 A|All our stories are business focused and add business value|100
-A|Most of our stories are business focused and have business value|80
+A|Most of our stories are business focused and add business value|80
 A|Some of our stories are business focused, some are technical|40
 A|All of our stories are technical|0
 
@@ -51,13 +51,13 @@ A|We don't use CI|0
 Q|Do you run regression tests?|ENGINEERING
 A|We have a comprehensive suite of automated regression tests|100
 A|We have a comprehensive suite of regression tests, some of which are automated|80
-A|We have some regression tests|40
-A|We have no regression tests|0
+A|We have manual regression tests|30
+A|We do not do manual regression testing|0
 
 Q|Do you automate your releases?|ENGINEERING
 A|Our releases are completely automated|100
 A|Our releases are automated but we include some manual checks|80
-A|Our releases are partially automated|60
+A|Our releases are partially automated|40
 A|We have no release automation|0
 
 Q|How often do you do releases?|ENGINEERING

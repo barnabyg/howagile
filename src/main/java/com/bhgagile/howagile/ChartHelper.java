@@ -7,9 +7,14 @@
  */
 package com.bhgagile.howagile;
 
+import java.awt.Color;
+import java.awt.Paint;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
@@ -17,6 +22,15 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  */
 public final class ChartHelper {
+
+    /**
+     * Two thirds.
+     */
+    private static final double TWO_THIRDS = 0.66;
+    /**
+     * One third.
+     */
+    private static final double ONE_THIRD = 0.33;
 
     /**
      * Private constructor as this is a helper.
@@ -42,7 +56,35 @@ public final class ChartHelper {
 
         final JFreeChart chart = ChartFactory.createBarChart(
                 label, "", "", dataset,
-                PlotOrientation.VERTICAL, true, true, true);
+                PlotOrientation.VERTICAL, false, false, false);
+
+        final CategoryPlot plot = chart.getCategoryPlot();
+
+        // set the colour based on how good the score was
+        Color scoreColour = Color.green;
+
+        float scorePercentage = 0;
+
+        if (score != 0) {
+            scorePercentage = (float) score / (float) scoreOutOf;
+        }
+
+        if (score == 0) {
+            scoreColour = Color.red;
+        } else if (scorePercentage < ONE_THIRD) {
+            scoreColour = Color.red;
+        } else if (
+                scorePercentage >= ONE_THIRD && scorePercentage < TWO_THIRDS) {
+
+            scoreColour = Color.orange;
+        } else {
+            scoreColour = Color.green;
+        }
+
+        final CategoryItemRenderer renderer = new CustomRenderer(
+                new Paint[] {scoreColour, Color.green});
+
+        plot.setRenderer(renderer);
 
         return chart;
     }
