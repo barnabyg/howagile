@@ -30,9 +30,13 @@ import com.bhgagile.howagile.model.QuestionModel;
  *
  */
 @Controller
-@SessionAttributes("questionModel")
+@SessionAttributes(MyController.QUESTION_MODEL)
 public final class MyController {
 
+    /**
+     * Question model object.
+     */
+    public static final String QUESTION_MODEL = "questionModel";
     /**
      * Width of a full sized chart.
      */
@@ -61,7 +65,10 @@ public final class MyController {
      * Results page.
      */
     public static final String RESULTS_PAGE = "results";
-
+    /**
+     * Error page.
+     */
+    public static final String ERROR_PAGE = "error";
     /**
      * Filename of the question file.
      */
@@ -71,7 +78,7 @@ public final class MyController {
      * Initialise the question model form.
      * @return populated form
      */
-    @ModelAttribute("questionModel")
+    @ModelAttribute(QUESTION_MODEL)
     public QuestionModel getQuestionModel() {
         return new QuestionModel();
     }
@@ -85,13 +92,20 @@ public final class MyController {
      */
     @RequestMapping(method = RequestMethod.GET, value = "/home")
     public String homeRequest(
-        @ModelAttribute(value = "questionModel")
+        @ModelAttribute(value = QUESTION_MODEL)
                 final QuestionModel questionModel, final Model model) {
 
-        questionModel.setQuestionMap(
-                QuestionsHelper.loadQuestionMap(QUESTION_FILE));
+        String retVal = "";
 
-        return HOME_PAGE;
+        try {
+            questionModel.setQuestionMap(
+                    QuestionsHelper.loadQuestionMap(QUESTION_FILE));
+            retVal = HOME_PAGE;
+        } catch (HelperException e) {
+            retVal = ERROR_PAGE;
+        }
+
+        return retVal;
     }
 
     /**
@@ -104,7 +118,7 @@ public final class MyController {
     @RequestMapping(
             method = RequestMethod.POST, value = "/next", params = "Next")
     public String nextPage(
-        @ModelAttribute(value = "questionModel")
+        @ModelAttribute(value = QUESTION_MODEL)
                 final QuestionModel questionModel, final Model model) {
 
         // increment the page counter
@@ -123,7 +137,7 @@ public final class MyController {
     @RequestMapping(
           method = RequestMethod.POST, value = "/next", params = "Previous")
     public String previousPage(
-        @ModelAttribute(value = "questionModel")
+        @ModelAttribute(value = QUESTION_MODEL)
                 final QuestionModel questionModel, final Model model) {
 
         // decrement the page counter
@@ -142,7 +156,7 @@ public final class MyController {
     @RequestMapping(
             method = RequestMethod.POST, value = "/next", params = "Results")
     public String resultsPage(
-        @ModelAttribute(value = "questionModel")
+        @ModelAttribute(value = QUESTION_MODEL)
                 final QuestionModel questionModel, final Model model) {
 
         return RESULTS_PAGE;
@@ -157,7 +171,7 @@ public final class MyController {
      */
     @RequestMapping(method = RequestMethod.POST, value = "/results")
     public String showResults(
-            @ModelAttribute(value = "questionModel")
+            @ModelAttribute(value = QUESTION_MODEL)
                 final QuestionModel questionModel, final Model model) {
 
         return "results";
@@ -173,7 +187,7 @@ public final class MyController {
      */
     @RequestMapping(value = "/chart", method = RequestMethod.GET)
     public void showChart(
-            @ModelAttribute(value = "questionModel")
+            @ModelAttribute(value = QUESTION_MODEL)
             @RequestParam("chartType") final String chartType,
             final QuestionModel questionModel,
             final ModelMap map,

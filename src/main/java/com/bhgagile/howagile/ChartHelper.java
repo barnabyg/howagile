@@ -29,16 +29,16 @@ public final class ChartHelper {
      * Show chart.
      * @param label label for the chart
      * @param score the score achieved
-     * @param outOf the maximum possible score
+     * @param scoreOutOf the maximum possible score
      * @return chart object
      */
     public static JFreeChart showChart(
-            final String label, final int score, final int outOf) {
+            final String label, final int score, final int scoreOutOf) {
 
         final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         dataset.addValue(score, "", "Your Score");
-        dataset.addValue(outOf, "", "Ideal Score");
+        dataset.addValue(scoreOutOf, "", "Ideal Score");
 
         final JFreeChart chart = ChartFactory.createBarChart(
                 label, "", "", dataset,

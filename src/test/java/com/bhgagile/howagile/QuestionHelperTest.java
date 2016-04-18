@@ -13,9 +13,8 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.bhgagile.howagile.model.Answer;
 import com.bhgagile.howagile.model.Category;
-import com.bhgagile.howagile.model.Question;
+import com.bhgagile.howagile.model.QuestionObj;
 
 /**
  * @author Barnaby Golden
@@ -42,11 +41,12 @@ public final class QuestionHelperTest {
 
     /**
      * Test the retrieval of a list of questions.
+     * @throws HelperException thrown
      */
     @Test
-    public void getQuestionsTest() {
+    public void getQuestionsTest() throws HelperException {
 
-        final Map<Integer, Question> list
+        final Map<Integer, QuestionObj> list
                     = QuestionsHelper.loadQuestionMap(Q_FILE);
 
 
@@ -56,31 +56,10 @@ public final class QuestionHelperTest {
         assertEquals("Question list was the wrong size",
                 ANSWER_COUNT, list.get(1).getAnswerMap().size());
 
-        final Question questionOne = list.get(1);
+        final QuestionObj questionOne = list.get(1);
 
         assertEquals("Unexpected category in question 1",
                                     CATEGORY, questionOne.getCategory());
 
-        printQuestionSet(list);
-    }
-
-    /**
-     * Print out the contents of a question map.
-     * @param list map of questions
-     */
-    private void printQuestionSet(final Map<Integer, Question> list) {
-
-        for (Integer key: list.keySet()) {
-            final Question question = (Question) list.get(key);
-            System.out.println(question.getQuestion());
-
-            for (Integer answerKey: question.getAnswerMap().keySet()) {
-
-                final Answer answer
-                    = (Answer) question.getAnswerMap().get(answerKey);
-
-                System.out.println(answer.getAnswerText());
-            }
-        }
     }
 }

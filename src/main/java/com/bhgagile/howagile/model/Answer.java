@@ -16,15 +16,15 @@ public final class Answer {
     /**
      * The text of the answer.
      */
-    private String answerText;
+    private transient String answerText;
     /**
      * The key for the answer.
      */
-    private Integer answerKey;
+    private transient Integer answerKey;
     /**
      * The value of selecting this answer.
      */
-    private int points;
+    private transient int points;
 
     /**
      * Default constructor.

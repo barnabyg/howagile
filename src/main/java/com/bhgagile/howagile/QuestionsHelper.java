@@ -5,14 +5,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.apache.log4j.Logger;
 
 import com.bhgagile.howagile.model.Answer;
 import com.bhgagile.howagile.model.Category;
-import com.bhgagile.howagile.model.Question;
+import com.bhgagile.howagile.model.QuestionObj;
 
  /*************************************************************************
  *  2014 BHGAGILE
@@ -29,6 +31,12 @@ import com.bhgagile.howagile.model.Question;
 public final class QuestionsHelper {
 
     /**
+     * Logger.
+     */
+    private static final Logger LOG =
+            Logger.getLogger(QuestionsHelper.class);
+
+    /**
      * Private constructor, all methods are static.
      */
     private QuestionsHelper() {
@@ -39,19 +47,17 @@ public final class QuestionsHelper {
      * Return a list of questions from a given source file.
      * @param srcPath filename of question source
      * @return map of questions
+     * @throws HelperException thrown
      */
-    public static Map<Integer, Question> loadQuestionMap(
-                                             final String srcPath) {
+    public static Map<Integer, QuestionObj> loadQuestionMap(
+                          final String srcPath) throws HelperException {
 
-        final Map<Integer, Question> map = new HashMap<Integer, Question>();
+        final Map<Integer, QuestionObj> map
+                = new ConcurrentHashMap<Integer, QuestionObj>();
 
         List<String> list = null;
 
-        try {
-            list = loadFile(srcPath);
-        } catch (HelperException he) {
-            System.out.println(he.getMessage());
-        }
+        list = loadFile(srcPath);
 
         final Iterator<String> iterator = list.iterator();
 
@@ -100,9 +106,10 @@ public final class QuestionsHelper {
      * @param strings list of strings, starts with Q and then n answers
      * @return populated question object
      */
-    private static Question parseQuestion(final List<String> strings) {
+    private static QuestionObj parseQuestion(final List<String> strings) {
 
-        final Map<Integer, Answer> answers = new HashMap<Integer, Answer>();
+        final Map<Integer, Answer> answers
+                = new ConcurrentHashMap<Integer, Answer>();
 
         for (int i = 1; i < strings.size(); i++) {
 
@@ -122,7 +129,7 @@ public final class QuestionsHelper {
         final String[] parsedQuestion = strings.get(0).split("\\|");
         //CHECKSTYLE.ON
 
-        final Question question = new Question(
+        final QuestionObj question = new QuestionObj(
              parsedQuestion[1], Category.valueOf(parsedQuestion[2]), answers);
 
         return question;
@@ -132,11 +139,9 @@ public final class QuestionsHelper {
      * Load a file and return a list of strings representing the lines in the
      * file.
      *
-     * @param srcPath
-     *            file name
+     * @param srcPath file name
      * @return list of strings
-     * @throws HelperException
-     *             thrown on IO error
+     * @throws HelperException thrown on IO error
      */
     private static List<String> loadFile(final String srcPath)
             throws HelperException {
@@ -145,8 +150,9 @@ public final class QuestionsHelper {
 
         BufferedReader inReader = null;
 
-        InputStream in = QuestionsHelper.class.getClassLoader()
-                .getResourceAsStream(srcPath);
+        final InputStream in
+                = Thread.currentThread().getContextClassLoader()
+                                        .getResourceAsStream(srcPath);
 
         try {
 
@@ -157,7 +163,7 @@ public final class QuestionsHelper {
                 list.add(line);
             }
 
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             throw new HelperException(ex);
         } finally {
 
@@ -166,7 +172,7 @@ public final class QuestionsHelper {
                     inReader.close();
                 }
             } catch (IOException ex) {
-                throw new HelperException(ex);
+                LOG.fatal(ex.getMessage());
             }
         }
 

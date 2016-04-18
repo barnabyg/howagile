@@ -28,6 +28,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public final class QuestionIT {
 
     /**
+     * Reveal button name.
+     */
+    private static final String BUTTON_REVEAL = "buttonReveal";
+    /**
+     * Next submit button name.
+     */
+    private static final String SUBMIT_NEXT = "submitNextId";
+    /**
      * Delay in ms.
      */
     private static final int DELAY = 600;
@@ -38,7 +46,7 @@ public final class QuestionIT {
     /**
      * Web driver.
      */
-    private WebDriver driver;
+    private transient WebDriver driver;
 
     /**
      * Setup.
@@ -67,33 +75,33 @@ public final class QuestionIT {
             // no action required
         }
 
-        clickSubmit(driver, "submitNextId");
+        clickSubmit(driver, SUBMIT_NEXT);
 
-        clickSubmit(driver, "buttonReveal");
+        clickSubmit(driver, BUTTON_REVEAL);
 
         selectRadioButton(driver, "questionMap1.selectedAnswer1");
         selectRadioButton(driver, "questionMap2.selectedAnswer1");
         selectRadioButton(driver, "questionMap3.selectedAnswer1");
 
-        clickSubmit(driver, "submitNextId");
+        clickSubmit(driver, SUBMIT_NEXT);
 
-        clickSubmit(driver, "buttonReveal");
+        clickSubmit(driver, BUTTON_REVEAL);
 
         selectRadioButton(driver, "questionMap4.selectedAnswer1");
         selectRadioButton(driver, "questionMap5.selectedAnswer1");
         selectRadioButton(driver, "questionMap6.selectedAnswer1");
 
-        clickSubmit(driver, "submitNextId");
+        clickSubmit(driver, SUBMIT_NEXT);
 
-        clickSubmit(driver, "buttonReveal");
+        clickSubmit(driver, BUTTON_REVEAL);
 
         selectRadioButton(driver, "questionMap7.selectedAnswer1");
         selectRadioButton(driver, "questionMap8.selectedAnswer1");
         selectRadioButton(driver, "questionMap9.selectedAnswer1");
 
-        clickSubmit(driver, "submitNextId");
+        clickSubmit(driver, SUBMIT_NEXT);
 
-        clickSubmit(driver, "buttonReveal");
+        clickSubmit(driver, BUTTON_REVEAL);
 
         selectRadioButton(driver, "questionMap10.selectedAnswer1");
         selectRadioButton(driver, "questionMap11.selectedAnswer1");
@@ -136,6 +144,10 @@ public final class QuestionIT {
 
         final ExpectedCondition<Boolean> pageLoadCondition = new
                 ExpectedCondition<Boolean>() {
+
+                    /**
+                     * {@inheritDoc}
+                     */
                     public Boolean apply(final WebDriver driver) {
                         return ((JavascriptExecutor) driver).executeScript(
                                "return document.readyState").equals("complete");

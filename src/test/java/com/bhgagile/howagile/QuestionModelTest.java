@@ -13,7 +13,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
-import com.bhgagile.howagile.model.Question;
+import com.bhgagile.howagile.model.QuestionObj;
 import com.bhgagile.howagile.model.QuestionModel;
 
 /**
@@ -37,14 +37,15 @@ public final class QuestionModelTest {
 
     /**
      * Scoring tests.
+     * @throws HelperException thrown
      */
     @Test
-    public void scoreTest() {
+    public void scoreTest() throws HelperException {
 
-        final Map<Integer, Question> list
+        final Map<Integer, QuestionObj> list
         = QuestionsHelper.loadQuestionMap(Q_FILE);
 
-        Question question = list.get(1);
+        QuestionObj question = list.get(1);
         question.setSelectedAnswer(1);
 
         question = list.get(2);

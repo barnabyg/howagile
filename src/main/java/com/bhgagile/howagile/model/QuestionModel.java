@@ -22,22 +22,22 @@ public final class QuestionModel {
     /**
      * List of questions.
      */
-    private Map<Integer, Question> questionMap;
+    private Map<Integer, QuestionObj> questionMap;
     /**
      * Page number.
      */
-    private int pageNumber = 0;
+    private int pageNumber;
 
     /**
      * @param questionMap list of question
      */
-    public void setQuestionMap(final Map<Integer, Question> questionMap) {
+    public void setQuestionMap(final Map<Integer, QuestionObj> questionMap) {
         this.questionMap = questionMap;
     }
     /**
      * @return map of questions
      */
-    public Map<Integer, Question> getQuestionMap() {
+    public Map<Integer, QuestionObj> getQuestionMap() {
         return this.questionMap;
     }
     /**
@@ -93,8 +93,10 @@ public final class QuestionModel {
 
         int total = 0;
 
-        for (Integer key: this.questionMap.keySet()) {
-            final Question question = (Question) this.questionMap.get(key);
+        for (final Integer key: this.questionMap.keySet()) {
+
+            final QuestionObj question
+                    = (QuestionObj) this.questionMap.get(key);
 
             if (question.getSelectedAnswer() != null
                         && question.getSelectedAnswer() > 0) {
@@ -118,8 +120,10 @@ public final class QuestionModel {
 
         int total = 0;
 
-        for (Integer key: this.questionMap.keySet()) {
-            final Question question = (Question) this.questionMap.get(key);
+        for (final Integer key: this.questionMap.keySet()) {
+
+            final QuestionObj question
+                    = (QuestionObj) this.questionMap.get(key);
 
             if (question.getCategory().equals(category)
                         && question.getSelectedAnswer() != null
@@ -143,8 +147,10 @@ public final class QuestionModel {
 
         int maxScore = 0;
 
-        for (Integer key: this.questionMap.keySet()) {
-            final Question question = (Question) this.questionMap.get(key);
+        for (final Integer key: this.questionMap.keySet()) {
+
+            final QuestionObj question
+                    = (QuestionObj) this.questionMap.get(key);
 
             maxScore = maxScore + findMaxPointsAnswer(question);
         }
@@ -160,8 +166,10 @@ public final class QuestionModel {
 
         int maxScore = 0;
 
-        for (Integer key: this.questionMap.keySet()) {
-            final Question question = (Question) this.questionMap.get(key);
+        for (final Integer key: this.questionMap.keySet()) {
+
+            final QuestionObj question
+                    = (QuestionObj) this.questionMap.get(key);
 
             if (question.getCategory().equals(category)) {
                 maxScore = maxScore + findMaxPointsAnswer(question);
@@ -176,11 +184,11 @@ public final class QuestionModel {
      * @param question the question to analyse
      * @return points for highest score answer
      */
-    private int findMaxPointsAnswer(final Question question) {
+    private int findMaxPointsAnswer(final QuestionObj question) {
 
         int maxPoints = 0;
 
-        for (Integer key: question.getAnswerMap().keySet()) {
+        for (final Integer key: question.getAnswerMap().keySet()) {
             final Answer answer = (Answer) question.getAnswerMap().get(key);
 
             if (answer.getPoints() > maxPoints) {
