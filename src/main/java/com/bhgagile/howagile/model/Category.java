@@ -27,5 +27,9 @@ public enum Category {
     /**
      * Product related.
      */
-    PRODUCT
+    PRODUCT,
+    /**
+     * Sprint related.
+     */
+    SPRINTS
 }

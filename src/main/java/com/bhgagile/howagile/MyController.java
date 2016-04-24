@@ -230,6 +230,11 @@ public final class MyController {
             outOf = questionModel.getMaxPossibleScore(Category.COMMUNICATION);
             label = "Communication Score";
             break;
+        case "sprints":
+            total = questionModel.getTotalScore(Category.SPRINTS);
+            outOf = questionModel.getMaxPossibleScore(Category.SPRINTS);
+            label = "Sprints Score";
+            break;
         default: // no default needed
         }
 

@@ -83,7 +83,11 @@ public final class QuestionModel {
      * @return total number of pages
      */
     public int getTotalPages() {
-        return (int) this.getQuestionCount() / this.questionsPerPage;
+
+        final float count = (float) getQuestionCount();
+        final float qPerPage = (float) getQuestionsPerPage();
+
+        return Math.round(count / qPerPage);
     }
 
     /**

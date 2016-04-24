@@ -29,6 +29,10 @@
 
         uri = "chart.go?chartType=" + "engineering";
         document.getElementById("engineeringFrame").src=uri;
+
+        uri = "chart.go?chartType=" + "sprints";
+        document.getElementById("sprintsFrame").src=uri;
+
       }
     </script>
   </head>
@@ -52,6 +56,10 @@
     </iframe>
 
     <iframe id="engineeringFrame" src="" width="500" height="300" scrolling="no" frameborder="0">
+     <p>Your browser does not support iframes</p>
+    </iframe>
+
+    <iframe id="sprintsFrame" src="" width="500" height="300" scrolling="no" frameborder="0">
      <p>Your browser does not support iframes</p>
     </iframe>
 

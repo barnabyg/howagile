@@ -1,10 +1,10 @@
 Q|Are your teams self-organising?|TEAM
 A|Our teams are completely self-organising|100
 A|Our teams are mostly self-organising|80
-A|We have a manager or a team leader in each team|0
+A|We have managers or team leaders in each team|0
 A|Our managers are outside the team but they control what goes on inside it|0
 
-Q|What is your usual team size?|TEAM
+Q|What is the usual team size?|TEAM
 A|All teams  have from 3 to 9 members|100
 A|Some teams have more than 9 or less than 3 members|80
 A|Most teams have more than 9 or less than 3 members|10
@@ -15,26 +15,43 @@ A|The teams are collocated|100
 A|The teams are partially collocated|80
 A|The teams are not collocated|0
 
+Q|Are the members of your team cross-skilled?|TEAM
+A|Our team members are cross-skilled|100
+A|Some team members are cross-skilled|70
+A|Our team members each have one skill (e.g. developer, tester, etc.)|0
+
 Q|How do you report progress to management?|COMMUNICATION
 A|Our Scrum process is transparent, we have no need for other forms of reporting|100
-A|We report verbally|80
-A|We update report documents or report emails|0
+A|We only report verbally|80
+A|We produce written reports or email updates|0
 
-Q|How transparent are your teams?|COMMUNICATION
-A|We show sprint progress on task boards and encourage people to attend our sprint reviews|100
-A|We show sprint progress on task boards, but restrict who can attend sprint reviews|40
-A|We restrict who can attend sprint reviews and we do not have public task boards|0
+Q|How do you show sprint progress?|COMMUNICATION
+A|We show sprint progress on public task boards|100
+A|We show sprint progress on task boards, but restrict who can view them|40
+A|We do not use task boards|0
+
+Q|How open are your sprint reviews?|COMMUNICATION
+A|We encourage all interested parties to attend our sprint reviews|100
+A|The Product Owner decides who can attend sprint reviews|60
+A|Sprint reviews are only for the team|0
 
 Q|Who is your Product Owner?|PRODUCT
-A|We have a Product Owner from the business who spends 50% or more of their time working with the Scrum Team|100
-A|We have a Product Owner from the business who spends less than 50% of their time working with the Scrum Team|70
-A|Our Product Owner is not a business user|0
+A|We have a Product Owner from the business who has full authority over the product|100
+A|We have a Product Owner from the business who has some authority over the product|50
+A|We have a Product Owner from the business who has no authority over the product|20
+A|We have a Product Owner who is not from the business but they have full authority over the product|20
+A|We have a Product Owner who is not from the business and they do not have full authority over the product|0
 
-Q|Do you measure business value?|PRODUCT
-A|We have an organisation-wide definition of value and all stories are given a business value|100
-A|We have various measures of value, but all stories are given a business value|90
-A|Some stories are given business value|40
-A|No stories are given business value|0
+Q|How available is your Product Owner?|PRODUCT
+A|We have a Product Owner who spends 50% or more of their time working with the Scrum Team|100
+A|We have a Product Owner who spends less than 50% of their time working with the Scrum Team|70
+A|Our Product Owner only attends Scrum ceremonies|0
+
+Q|Do you measure value?|PRODUCT
+A|We have an organisation-wide definition of value and all stories are given a value rating|100
+A|We have various definitions of value across our organisation, but all stories are given a value rating|90
+A|Some stories are given a value rating|30
+A|No stories are given a value rating|0
 
 Q|Are your user stories business focused?|PRODUCT
 A|All our stories are business focused and add business value|100
@@ -42,17 +59,27 @@ A|Most of our stories are business focused and add business value|80
 A|Some of our stories are business focused, some are technical|40
 A|All of our stories are technical|0
 
+Q|Do you have incomplete stories at the end of each sprint?|SPRINTS
+A|Never or very rarely|100
+A|Sometimes|60
+A|All the time|0
+
+Q|Are your sprints of a fixed length?|SPRINTS
+A|Always|100
+A|We sometimes change the sprint length|10
+A|We often change the sprint length|0
+
 Q|Do you use continuous integration (CI)?|ENGINEERING
-A|We use CI for everything (builds, unit tests, functional tests, code quality checks, perf. tests, etc.)|100
+A|We use CI for everything (builds, unit tests, functional tests, code quality checks, performance tests, etc.)|100
 A|We use CI for builds, unit tests and functional tests|70
 A|We use CI for builds and unit tests|50
 A|We don't use CI|0
 
-Q|Do you run regression tests?|ENGINEERING
+Q|Do you do regression testing?|ENGINEERING
 A|We have a comprehensive suite of automated regression tests|100
 A|We have a comprehensive suite of regression tests, some of which are automated|80
-A|We have manual regression tests|30
-A|We do not do manual regression testing|0
+A|We do manual regression testing|30
+A|We do not do any regression testing|0
 
 Q|Do you automate your releases?|ENGINEERING
 A|Our releases are completely automated|100
