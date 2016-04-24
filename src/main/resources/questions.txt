@@ -69,6 +69,11 @@ A|Always|100
 A|We sometimes change the sprint length|10
 A|We often change the sprint length|0
 
+Q|Do your teams have a definition of done?|SPRINTS
+A|Always|100
+A|Sometimes|30
+A|Never|0
+
 Q|Do you use continuous integration (CI)?|ENGINEERING
 A|We use CI for everything (builds, unit tests, functional tests, code quality checks, performance tests, etc.)|100
 A|We use CI for builds, unit tests and functional tests|70
@@ -88,6 +93,6 @@ A|Our releases are partially automated|40
 A|We have no release automation|0
 
 Q|How often do you do releases?|ENGINEERING
-A|We have a releasable product every sprint|100
-A|We have a releasable product every 2-3 sprints|50
-A|We have a releasable product every 4 or more sprints|0
+A|We have a potentially releasable product every sprint|100
+A|We have a potentially releasable product every 2-3 sprints|30
+A|We have a potentially releasable product every 4 or more sprints|0

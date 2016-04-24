@@ -105,6 +105,7 @@ public final class QuestionIT {
 
         selectRadioButton(driver, "questionMap16.selectedAnswer1");
         selectRadioButton(driver, "questionMap17.selectedAnswer1");
+        selectRadioButton(driver, "questionMap18.selectedAnswer1");
 
         clickSubmit(driver, "submitResultsId");
     }
