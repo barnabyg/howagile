@@ -93,13 +93,17 @@ public final class MyController {
     @RequestMapping(method = RequestMethod.GET, value = "/home")
     public String homeRequest(
         @ModelAttribute(value = QUESTION_MODEL)
-                final QuestionModel questionModel, final Model model) {
+                final QuestionModel questionModel,
+                final Model model) {
 
         String retVal = "";
 
         try {
             questionModel.setQuestionMap(
                     QuestionsHelper.loadQuestionMap(QUESTION_FILE));
+
+            questionModel.setPageNumber(0);
+
             retVal = HOME_PAGE;
         } catch (HelperException e) {
             retVal = ERROR_PAGE;
@@ -166,13 +170,18 @@ public final class MyController {
      * Show the results.
      *
      * @param questionModel param
-     * @param model model
+     * @param map model map
+     * @param request request object
+     * @param response response object
      * @return results page
      */
     @RequestMapping(method = RequestMethod.POST, value = "/results")
     public String showResults(
             @ModelAttribute(value = QUESTION_MODEL)
-                final QuestionModel questionModel, final Model model) {
+            final QuestionModel questionModel,
+            final ModelMap map,
+            final HttpServletRequest request,
+            final HttpServletResponse response) {
 
         return "results";
     }

@@ -7,14 +7,19 @@
  */
 package com.bhgagile.howagile.model;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * @author Barnaby Golden
  *
  */
-public final class QuestionObj {
+public final class QuestionObj implements Serializable {
 
+    /**
+     * Serial UID.
+     */
+    private static final long serialVersionUID = -7949357371051780659L;
     /**
      * Question string.
      */

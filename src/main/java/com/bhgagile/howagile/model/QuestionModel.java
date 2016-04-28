@@ -7,14 +7,19 @@
  */
 package com.bhgagile.howagile.model;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
  * @author Barnaby Golden
  *
  */
-public final class QuestionModel {
+public final class QuestionModel implements Serializable {
 
+    /**
+     * Serial UID.
+     */
+    private static final long serialVersionUID = -7590215701188566050L;
     /**
      * Number of questions on a page.
      */
