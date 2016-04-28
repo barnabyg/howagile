@@ -2,16 +2,39 @@ html {
   font-size: 100%;
 }
 
-.hidden {
-    display: none;
+.largeChart {
+    background-color:#eeeeee;
+    padding:20px; 
 }
 
-.visible {
-    display: block;
+.largeChartFrame {
+    width:600;
+    height:350;
+    scrolling:no;
+    frameborder:0;    
+}
+
+.smallChart {
+    background-color:#eeeeee;
+    padding:20px; 
+}
+
+.smallChartFrame {
+    width:500;
+    height:250;
+    scrolling:no;
+    frameborder:0;    
+}
+
+.totalScore {
+    background-color:#eeeeee;
 }
 
 .homeIntroduction {
     width: 800px;
     margin: 20px;
-/*    border: 1px solid #ffffff; */
+}
+
+p {
+    
 }

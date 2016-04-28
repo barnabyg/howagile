@@ -39,31 +39,33 @@
 
   <body>
 
-    <iframe id="totalFrame" src="" width="600" height="400" scrolling="no" frameborder="0">
-     <p>Your browser does not support iframes</p>
-    </iframe>
+    <div class="largeChart" >
+      <iframe id="totalFrame"src="" class="largeChartFrame">
+       <p>Your browser does not support iframes</p>
+      </iframe>
+    </div>
 
-    <iframe id="teamFrame" src="" width="500" height="300" scrolling="no" frameborder="0">
-     <p>Your browser does not support iframes</p>
-    </iframe>
-
-    <iframe id="communicationFrame" src="" width="500" height="300" scrolling="no" frameborder="0">
-     <p>Your browser does not support iframes</p>
-    </iframe>
-
-    <iframe id="productFrame" src="" width="500" height="300" scrolling="no" frameborder="0">
-     <p>Your browser does not support iframes</p>
-    </iframe>
-
-    <iframe id="engineeringFrame" src="" width="500" height="300" scrolling="no" frameborder="0">
-     <p>Your browser does not support iframes</p>
-    </iframe>
-
-    <iframe id="sprintsFrame" src="" width="500" height="300" scrolling="no" frameborder="0">
-     <p>Your browser does not support iframes</p>
-    </iframe>
-
-    <p>Score: <c:out value="${questionModel.totalScore}" /> out of <c:out value="${questionModel.maxPossibleScore}" /></p>
+    <div class="smallChart">
+      <iframe id="teamFrame" src="" class="smallChartFrame">
+       <p>Your browser does not support iframes</p>
+      </iframe>
+  
+      <iframe id="communicationFrame" src="" class="smallChartFrame">
+       <p>Your browser does not support iframes</p>
+      </iframe>
+  
+      <iframe id="productFrame" src="" class="smallChartFrame">
+       <p>Your browser does not support iframes</p>
+      </iframe>
+  
+      <iframe id="engineeringFrame" src="" class="smallChartFrame">
+       <p>Your browser does not support iframes</p>
+      </iframe>
+  
+      <iframe id="sprintsFrame" src="" class="smallChartFrame">
+       <p>Your browser does not support iframes</p>
+      </iframe>
+    </div>
 
   </body>
 
