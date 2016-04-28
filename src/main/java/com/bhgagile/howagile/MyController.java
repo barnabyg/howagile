@@ -183,6 +183,8 @@ public final class MyController {
             final HttpServletRequest request,
             final HttpServletResponse response) {
 
+        request.getSession().removeAttribute(QUESTION_MODEL);
+
         return "results";
     }
 
